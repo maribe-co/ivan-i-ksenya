@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Иван и Ксения - Приглашение</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Marck+Script&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #111111;
+        --muted: #cfd1d4;
+        --paper: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Montserrat", system-ui, sans-serif;
+        color: var(--ink);
+        background: #e9e9e9;
+      }
+
+      .page {
+        width: min(100%, 720px);
+        margin: 0 auto;
+        background: var(--paper);
+      }
+
+      .hero {
+        min-height: 690px;
+        background: url("./images/1.webp") center / cover no-repeat;
+        filter: grayscale(100%); 
+        color: #fff;
+        display: flex;
+        align-items: flex-end;
+        padding: 40px 26px 28px;
+      }
+
+      .hero__content {
+        width: 100%;
+        text-align: center;
+      }
+
+      .names {
+        font-family: "Great Vibes", serif;
+        font-size: clamp(34px, 8.8vw, 64px);
+        line-height: 0.9;
+        letter-spacing: 0.03em;
+        margin: 0 0 16px;
+      }
+
+      .counter {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        background: rgba(205, 210, 216, 0.55);
+        padding: 14px 10px;
+      }
+
+      .counter__num {
+        font-size: clamp(22px, 6.2vw, 42px);
+        font-weight: 600;
+        line-height: 1;
+        color: rgb(56, 26, 5);
+      }
+
+      .counter__label {
+        display: block;
+        margin-top: 2px;
+        font-size: clamp(13px, 3.2vw, 18px);
+        font-weight: 600;
+        color: rgb(56, 26, 5);
+      }
+
+      section {
+        padding: 46px 30px;
+      }
+
+      h2 {
+        margin: 0 0 14px;
+        text-align: center;
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(34px, 8.2vw, 58px);
+        font-weight: 600;
+        line-height: 0.92;
+        letter-spacing: 0.04em;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .lead {
+        text-align: center;
+        font-size: clamp(13px, 4.2vw, 23px);
+        line-height: 1.3;
+        font-weight: 600;
+      }
+      .palette__label {
+        margin: 0 0 14px;
+        text-align: center;
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(26px, 6.3vw, 44px);
+        font-weight: 500;
+        font-style: italic;
+        letter-spacing: 0.02em;
+      }
+      .date {
+        position: relative;
+        text-align: center;
+        padding: 8px
+      }
+      .script {
+        font-family: "Great Vibes", "Marck Script", cursive;
+      }
+
+      .date__content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .date__value {
+        margin: 10px 0 12px;
+        font-size: clamp(20px, 6vw, 34px);
+        font-weight: 500;
+      }
+
+      .timeline {
+        margin-top: 22px;
+        display: grid;
+        gap: 24px;
+      }
+
+      .time-item {
+        display: grid;
+        grid-template-columns: 52px 1fr;
+        gap: 12px;
+        align-items: start;
+      }
+
+      .time-item__hour {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        font-size: clamp(16px, 4.1vw, 27px);
+        font-weight: 500;
+      }
+
+      .time-item__body {
+        border-left: 2px solid #1d1d1d;
+        padding-left: 12px;
+      }
+
+      .time-item__title {
+        font-family: "Great Vibes", "Marck Script", cursive;
+        font-size: clamp(28px, 6.5vw, 46px);
+        line-height: 0.9;
+      }
+
+      .time-item__text {
+        margin-top: 8px;
+        font-size: clamp(14px, 3.6vw, 24px);
+        line-height: 1.2;
+      }
+
+      /* ПРОГРАММА (на месте локации) */
+      .program {
+        padding-top: 52px;
+        padding-bottom: 56px;
+      }
+
+      .program__heading {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin: 0 0 36px;
+        padding: 0;
+        font-family: "Playfair Display", "Cormorant Garamond", serif;
+        font-size: clamp(26px, 6.5vw, 40px);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        line-height: 1;
+        text-align: left;
+        text-transform: uppercase;
+      }
+
+      .program__heading::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #000;
+        min-width: 24px;
+      }
+
+      .program-event {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .program-event + .program-event {
+        margin-top: 48px;
+      }
+
+      .program-event--right {
+        align-items: flex-end;
+        text-align: right;
+      }
+
+      .program-event--left {
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .program-event__time {
+        display: block;
+        font-family: "Montserrat", system-ui, sans-serif;
+        font-size: clamp(15px, 3.8vw, 20px);
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .program-event__title {
+        margin: 4px 0 0;
+        max-width: 100%;
+        font-family: "Montserrat", system-ui, sans-serif;
+        font-size: clamp(11px, 2.8vw, 14px);
+        font-weight: 600;
+        line-height: 1.35;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .program-event__img {
+        display: block;
+        width: min(70%, 320px);
+        height: auto;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border: 1px solid #000;
+        padding: 6px;
+        margin-top: 4px;
+        
+      }
+
+      .program-event__caption {
+        max-width: min(70%, 320px);
+        font-family: "Montserrat", system-ui, sans-serif;
+        font-size: clamp(11px, 2.9vw, 13px);
+        font-weight: 500;
+        line-height: 1.45;
+        color: #111;
+      }
+
+      .palette {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: clamp(8px, 2.4vw, 30px);
+        margin-top: 22px;
+      }
+
+      .swatch {
+        width: clamp(48px, 7vw, 80px);
+        height: clamp(48px, 7vw, 80px);
+        flex-shrink: 0;
+        border-radius: 50%;
+      }
+
+      .details-cover {
+        height: 260px;
+        background: url("https://optim.tildacdn.com/tild6336-6635-4438-b365-343166633538/-/resize/857x/-/format/webp/noroot.png.webp") 100% 48%/ cover no-repeat;
+      }
+
+      .cta {
+        text-align: center;
+      }
+
+      .cta h2 {
+        margin-bottom: 24px;
+      }
+
+      .cta__label {
+        font-size: clamp(18px, 4.4vw, 28px);
+        line-height: 1.2;
+        font-weight: 500;
+        margin-bottom: 24px;
+      }
+
+      .cta__btn {
+        display: inline-block;
+        width: 100%;
+        text-decoration: none;
+        border: 3px solid #0f0f0f;
+        color: #0f0f0f;
+        padding: 16px 12px;
+        font-size: clamp(19px, 4.8vw, 32px);
+        font-weight: 700;
+      }
+
+      .footer-photo {
+        height: 500px;
+        background: url("./images/image.webp") center / cover no-repeat;
+        filter: grayscale(100%); 
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <div class="hero__content">
+          <h1 class="names">Иван<br />&amp;<br />Ксения</h1>
+          <div class="counter" aria-label="Обратный отсчет до свадьбы">
+            <div>
+              <div class="counter__num" id="days">0</div>
+              <span class="counter__label">дней</span>
+            </div>
+            <div>
+              <div class="counter__num" id="hours">0</div>
+              <span class="counter__label">часов</span>
+            </div>
+            <div>
+              <div class="counter__num" id="minutes">0</div>
+              <span class="counter__label">минут</span>
+            </div>
+            <div>
+              <div class="counter__num" id="seconds">0</div>
+              <span class="counter__label">секунд</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>ДОРОГИЕ ГОСТИ!</h2>
+        <p class="lead">
+          В нашей жизни скоро состоится важное событие - наша свадьба!<br />
+          <br />
+          Будем рады разделить с вами этот чудесный день!
+        </p>
+      </section>
+
+      <section class="date">
+        <div class="date__content">
+          <h2 class="script">Love the date</h2>
+          <div class="date__value">06.06.2026</div>
+          <p class="lead">Тот самый день, когда мы станем семьей!</p>
+          <h2 style="margin-top: 44px; margin-bottom: 25px;">TIMING</h2>
+          <div class="timeline"">
+            <article class="time-item">
+              <div class="time-item__hour">15:30</div>
+              <div class="time-item__body">
+                <div class="time-item__title">Сбор гостей</div>
+                <p class="time-item__text">
+                  время пролетит незаметно за игристым и общением с другими
+                  гостями
+                </p>
+              </div>
+            </article>
+            <article class="time-item">
+              <div class="time-item__hour">16:00</div>
+              <div class="time-item__body">
+                <div class="time-item__title">Встреча жениха и невесты</div>
+                <p class="time-item__text">
+                  время приготовить носовые платочки для трогательного момента
+                </p>
+              </div>
+            </article>
+            <article class="time-item">
+              <div class="time-item__hour">16:30</div>
+              <div class="time-item__body">
+                <div class="time-item__title">Банкет</div>
+                <p class="time-item__text">время вкусной еды, танцев и развлечений</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="program" aria-labelledby="program-heading">
+        <h2 id="program-heading" class="program__heading">LOCATION</h2>
+
+        <article class="program-event program-event--right">
+          <div>
+            <time class="program-event__time" datetime="2026-08-28T12:00"
+              >15:20</time
+            >
+          </div>
+          <img
+            class="program-event__img"
+            src="./images/123.png"
+            alt="Дворец бракосочетания"
+            width="640"
+            height="480"
+            loading="lazy"
+          />
+          <p class="program-event__caption">
+            Кафе / Парковая ул., 5
+          </p>
+        </article>
+      </section>
+
+      <section>
+        <h2>DRESS CODE</h2>
+        <p class="lead">
+          Мы очень старались сделать праздник красивым и будем рады, если в своих
+          нарядах вы поддержите цветовую палитру нашей свадьбы!
+        </p>
+        <div class="palette" aria-label="Палитра дресс-кода">
+          <p class="palette__label" style="margin-top: 17px; width: 100%;">
+            Леди
+          </p>
+          <div class="swatch" style="background:#835d48;" title="Шоколад"></div>
+          <div class="swatch" style="background:#ddd5d5;" title="Шоколад"></div>
+          <div class="swatch" style="background:#d9c5b2;" title="Светлый беж"></div>
+          <div class="swatch" style="background:#f2b3f8;" title="Шоколад"></div>
+        </div>
+        <div class="palette" aria-label="Палитра дресс-кода">
+          <p class="palette__label" style="margin-top: 17px; width: 100%;">
+            Джентельмены
+          </p>
+          <div class="swatch" style="background:#000000;" title="Шоколад"></div>
+          <div class="swatch" style="background:#835d48;" title="Шоколад"></div>
+          <div class="swatch" style="background:#ddd5d5" title="Шоколад"></div>
+          <div class="swatch" style="background:#cec0c0;" title="Шоколад"></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>DETAILS</h2>
+        <p class="lead">
+          Уважаемые гости!<br /><br />
+            Мы не хотим утруждать Вас выбором подарков, лучшим выбором будет подарок в конверте, ведь это поможет осуществить нам заветную мечту!<br /><br />
+            Дорогие гости, по желанию, вместо цветов вы можете подарить нам бутылочку вина, которую мы потом сможем открыть вместе с Вами!
+        </p>
+      </section>
+
+      <section class="cta">
+        <p class="lead" style="margin-bottom: 12px">С теплом и благодарностью,</p>
+        <p class="lead" style="margin-bottom: 32px">Иван и Ксения</p>
+        <h2>FORM</h2>
+        <p class="cta__label">Подтвердите присутствие</p>
+        <a
+          class="cta__btn"
+          href="https://example.com"
+          target="_blank"
+          rel="noopener"
+          aria-label="Перейти на внешний сайт для подтверждения"
+        >
+          Перейти к подтверждению
+        </a>
+      </section>
+      <div class="footer-photo" role="img" aria-label="Финальное фото пары"></div>
+    </main>
+
+    <script>
+      (function () {
+        var targetDate = new Date("2026-06-06T00:00:00+03:00").getTime();
+        var daysEl = document.getElementById("days");
+        var hoursEl = document.getElementById("hours");
+        var minutesEl = document.getElementById("minutes");
+        var secondsEl = document.getElementById("seconds");
+
+        function updateCountdown() {
+          var now = Date.now();
+          var diff = Math.max(0, targetDate - now);
+          var days = Math.floor(diff / 86400000);
+          var hours = Math.floor((diff % 86400000) / 3600000);
+          var minutes = Math.floor((diff % 3600000) / 60000);
+          var seconds = Math.floor((diff % 60000) / 1000);
+
+          daysEl.textContent = String(days);
+          hoursEl.textContent = String(hours);
+          minutesEl.textContent = String(minutes);
+          secondsEl.textContent = String(seconds);
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+      })();
+    </script>
+  </body>
+</html>
